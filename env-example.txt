@@ -1,0 +1,24 @@
+# PubNub Configuration for Multi-Choice Quiz
+# 1. Copy this content into a new file called ".env" in the project root
+# 2. Replace the placeholder values below with your actual PubNub keys
+# 3. Get your keys from: https://admin.pubnub.com
+
+# Your PubNub Publish Key (starts with pub-c-)
+VITE_PUBNUB_PUBLISH_KEY=pub-c-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# Your PubNub Subscribe Key (starts with sub-c-)
+VITE_PUBNUB_SUBSCRIBE_KEY=sub-c-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# Optional: Custom User ID (leave blank to auto-generate)
+# VITE_PUBNUB_USER_ID=my-custom-user-id
+
+# Supabase Configuration for Database Integration
+# Get your Supabase URL and anon key from: https://app.supabase.com/project/[your-project]/settings/api
+
+# Your Supabase Project URL (e.g., https://xxxxx.supabase.co)
+VITE_SUPABASE_URL=https://saygygqlukafrthtlkkw.supabase.co
+
+# Your Supabase Anon/Public Key (safe for client-side use)
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNheWd5Z3FsdWthZnJ0aHRsa2t3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzMDI1MzUsImV4cCI6MjA3MDg3ODUzNX0.s1uHQ4UK-OfpHcztXCbDOz0YoNqC76UzgKsSXelE5ro
+
+

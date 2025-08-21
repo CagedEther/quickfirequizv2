@@ -1,0 +1,411 @@
+{
+  "quizTitle": "Interactive Streaming & Media Industry Trivia",
+  "quizDescription": "Test your knowledge of little-known facts about streaming media, interactive content, digital entertainment milestones, sports history, and media innovations.",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What was the first interactive film shown in cinemas?",
+      "options": [
+        "Choose Your Own Adventure (1980)",
+        "Kinoautomat (Expo 67, Montreal)",
+        "Bandersnatch (2018)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Czech production Kinoautomat at Expo 67 in Montreal is widely cited as the first interactive film where audiences voted via buttons to decide the next scene."
+    },
+    {
+      "id": 2,
+      "question": "How many participants set a Guinness World Record during Twitch Plays Pokémon in 2014?",
+      "options": [
+        "Over 500,000",
+        "Over 1.16 million",
+        "Over 2 million"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Twitch Plays Pokémon set a Guinness World Record for the 'most participants on a single-player online videogame' with over 1.16 million participants."
+    },
+    {
+      "id": 3,
+      "question": "How long did it take the crowd to complete Pokémon Red during Twitch Plays Pokémon?",
+      "options": [
+        "About 3 days",
+        "About 16 days",
+        "About 30 days"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The original playthrough of Pokémon Red took roughly 16 days of crowd-controlled inputs to reach the credits."
+    },
+    {
+      "id": 4,
+      "question": "How many main endings did Netflix's Black Mirror: Bandersnatch have?",
+      "options": [
+        "3 main endings",
+        "5 main endings",
+        "7 main endings"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Bandersnatch shipped with at least five 'main' endings plus many variants and secret scenes, making it one of Netflix's most complex interactive narratives."
+    },
+    {
+      "id": 5,
+      "question": "What was the first band to perform a live concert on the internet?",
+      "options": [
+        "The Rolling Stones",
+        "Severe Tire Damage",
+        "Nirvana"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The garage band Severe Tire Damage live-streamed from Xerox PARC on June 24, 1993 over the experimental Mbone network."
+    },
+    {
+      "id": 6,
+      "question": "What was the first webcam ever created?",
+      "options": [
+        "A security camera",
+        "A coffee pot monitor",
+        "A weather camera"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Cambridge University's Trojan Room coffee pot cam began in 1991 on a local network and was put on the web in November 1993, becoming an early always-on stream."
+    },
+    {
+      "id": 7,
+      "question": "What was the first traditional radio station to stream online?",
+      "options": [
+        "BBC Radio 1",
+        "WXYC 89.3 FM (UNC Chapel Hill)",
+        "KROQ (Los Angeles)"
+      ],
+      "correctAnswer": 1,
+      "explanation": "WXYC 89.3 FM (UNC Chapel Hill) publicly simulcast its signal on November 7, 1994, often credited as the first full internet radio station stream."
+    },
+    {
+      "id": 8,
+      "question": "Which major rock band was the first to live-stream a concert online in 1994?",
+      "options": [
+        "The Beatles",
+        "The Rolling Stones",
+        "Led Zeppelin"
+      ],
+      "correctAnswer": 1,
+      "explanation": "On November 18, 1994, the Rolling Stones live-streamed five songs from Dallas over the internet via the Mbone network."
+    },
+    {
+      "id": 9,
+      "question": "What was the first MLB game broadcast on the internet?",
+      "options": [
+        "Yankees vs Red Sox",
+        "Mariners vs Yankees",
+        "Dodgers vs Giants"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A Mariners vs Yankees game in September 1995 was carried online (audio) using RealAudio technology, an early sports streaming landmark."
+    },
+    {
+      "id": 10,
+      "question": "What company launched the first streaming media software in 1995?",
+      "options": [
+        "Microsoft",
+        "RealNetworks",
+        "Apple"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Progressive Networks (later RealNetworks) released RealAudio 1.0 in April 1995, enabling low-bitrate live/on-demand audio over 14.4 kbps modems."
+    },
+    {
+      "id": 11,
+      "question": "What was the first viral live webcast that drew 1.5 million viewers in 1999?",
+      "options": [
+        "A presidential speech",
+        "Victoria's Secret fashion show",
+        "A sports event"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Victoria's Secret streamed a 20-minute fashion show on February 5, 1999, drawing an estimated 1.5 million viewers despite technical difficulties."
+    },
+    {
+      "id": 12,
+      "question": "What was the first YouTube video to reach 1 million views?",
+      "options": [
+        "Me at the Zoo",
+        "Nike ad featuring Ronaldinho",
+        "Charlie Bit My Finger"
+      ],
+      "correctAnswer": 1,
+      "explanation": "A Nike football commercial featuring Brazilian star Ronaldinho became the first video on YouTube to surpass 1,000,000 views in November 2005."
+    },
+    {
+      "id": 13,
+      "question": "What unique feature did Japan's Niconico introduce in 2006?",
+      "options": [
+        "Live chat",
+        "Danmaku 'bullet comments'",
+        "Video reactions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Niconico popularized on-screen, time-synced scrolling comments called 'danmaku' or 'bullet comments,' later adopted by platforms like Bilibili."
+    },
+    {
+      "id": 14,
+      "question": "What was Justin.tv's original concept that led to Twitch?",
+      "options": [
+        "Gaming streams",
+        "24/7 life streaming",
+        "News broadcasting"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Justin Kan streamed his life 24/7 in 2007, catalyzing the user-generated live platform that eventually spun off its booming gaming category as Twitch in 2011."
+    },
+    {
+      "id": 15,
+      "question": "What was Netflix's first original series, released in 2012?",
+      "options": [
+        "House of Cards",
+        "Lilyhammer",
+        "Orange is the New Black"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Lilyhammer premiered in February 2012, predating House of Cards and marking Netflix's pivot toward original content."
+    },
+    {
+      "id": 16,
+      "question": "What was Netflix's first interactive TV show for kids?",
+      "options": [
+        "Bandersnatch",
+        "Puss in Book: Trapped in an Epic Tale",
+        "You vs. Wild"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Puss in Book: Trapped in an Epic Tale and Buddy Thunderstruck: The Maybe Pile brought choose-your-own-adventure mechanics to mainstream streaming in 2017."
+    },
+    {
+      "id": 17,
+      "question": "How many concurrent viewers did Hotstar reach during the 2019 Cricket World Cup?",
+      "options": [
+        "About 15 million",
+        "About 25.3 million",
+        "About 35 million"
+      ],
+      "correctAnswer": 1,
+      "explanation": "During the India vs New Zealand Cricket World Cup semifinal on July 10, 2019, Hotstar set a high-water mark of about 25.3 million concurrent viewers."
+    },
+    {
+      "id": 18,
+      "question": "How much funding did Quibi raise before shutting down in 2020?",
+      "options": [
+        "About $750 million",
+        "About $1.75 billion",
+        "About $2.5 billion"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Despite raising about $1.75 billion and launching mobile-first short episodes, Quibi ceased operations in October 2020, just six months after debut."
+    },
+    {
+      "id": 19,
+      "question": "What was the target latency for YouTube's Ultra Low Latency mode?",
+      "options": [
+        "1-2 seconds",
+        "2-5 seconds",
+        "5-10 seconds"
+      ],
+      "correctAnswer": 1,
+      "explanation": "YouTube's Ultra Low Latency mode targets roughly 2-5 seconds for near-real-time audience interaction, with trade-offs like limited DVR/CC features."
+    },
+    {
+      "id": 20,
+      "question": "What protocol did Mixer use to achieve sub-second latency?",
+      "options": [
+        "HLS",
+        "FTL (Faster Than Light)",
+        "DASH"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Microsoft's Mixer popularized sub-second live latency using the FTL (Faster Than Light) protocol, enabling real-time game control and chat-and-react experiences."
+    },
+    {
+      "id": 21,
+      "question": "How many concurrent players did HQ Trivia reach at its peak in 2018?",
+      "options": [
+        "Over 1 million",
+        "Over 2 million",
+        "Over 3 million"
+      ],
+      "correctAnswer": 1,
+      "explanation": "At its height in 2018, HQ Trivia drew over 2 million concurrent players to a single live game, pushing the boundaries of mobile live infrastructure."
+    },
+    {
+      "id": 22,
+      "question": "What year did Apple announce Low-Latency HLS (LL-HLS)?",
+      "options": [
+        "2017",
+        "2019",
+        "2021"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Apple announced Low-Latency HLS at WWDC 2019, achieving low delay using partial segments and playlist innovations like preload hints and blocking reload."
+    },
+    {
+      "id": 23,
+      "question": "What percentage of people who start Buzzfeed quizzes complete them?",
+      "options": [
+        "About 75%",
+        "Over 96%",
+        "About 50%"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Over 96% of individuals who start quizzes on Buzzfeed complete them, highlighting the engaging nature of interactive content."
+    },
+    {
+      "id": 24,
+      "question": "What percentage of consumers prefer interactive videos over standard ones?",
+      "options": [
+        "About 25%",
+        "About 43%",
+        "About 60%"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Approximately 43% of consumers favor interactive videos over standard ones, indicating a growing demand for participatory content."
+    },
+    {
+      "id": 25,
+      "question": "What percentage of video streaming occurs on mobile devices?",
+      "options": [
+        "About 50%",
+        "About 75%",
+        "About 90%"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Around 75% of video streaming is conducted on mobile devices, underscoring the importance of mobile optimization for content providers."
+    },
+    {
+      "id": 26,
+      "question": "Why did the King of Scotland ban golf and football in the 15th century?",
+      "options": [
+        "They were too violent",
+        "They distracted from archery practice",
+        "They were expensive sports"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The King of Scotland banned golf and football on three separate occasions because they were considered a distraction from the crucial military pursuit of archery."
+    },
+    {
+      "id": 27,
+      "question": "What were the earliest hockey pucks made from?",
+      "options": [
+        "Rubber",
+        "Frozen cow dung",
+        "Wood"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The earliest hockey pucks were improvised from frozen cow dung, showing how resourceful early players were with available materials."
+    },
+    {
+      "id": 28,
+      "question": "What was the Stanley Cup originally called before 1936?",
+      "options": [
+        "The NHL Championship Trophy",
+        "The Dominion Hockey Challenge Cup",
+        "The Canadian Hockey Cup"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The Stanley Cup was originally known as the 'Dominion Hockey Challenge Cup' and was a challenge-based trophy for amateur teams before the NHL took control of it in 1936."
+    },
+    {
+      "id": 29,
+      "question": "In early basketball, what happened after every single made basket?",
+      "options": [
+        "A free throw was awarded",
+        "A jump ball took place at center court",
+        "The ball was given to the other team"
+      ],
+      "correctAnswer": 1,
+      "explanation": "In early basketball, a jump ball took place at center court after every single made basket, making the game much more stop-and-start than today's version."
+    },
+    {
+      "id": 30,
+      "question": "What was the first radio jingle in history?",
+      "options": [
+        "A Coca-Cola commercial",
+        "A Wheaties cereal commercial",
+        "A Ford automobile commercial"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The first radio jingle in history was a Wheaties cereal commercial performed by a barbershop quartet in 1926, marking the beginning of musical advertising."
+    },
+    {
+      "id": 31,
+      "question": "What was the first regularly scheduled televised sporting event?",
+      "options": [
+        "A football game",
+        "A college baseball game between Columbia and Princeton",
+        "A boxing match"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The first regularly scheduled televised sporting event was a college baseball game between Columbia and Princeton on May 17, 1939, broadcast to about 400 television sets in the New York area."
+    },
+    {
+      "id": 32,
+      "question": "What was the first televised commercial in history?",
+      "options": [
+        "A car advertisement",
+        "A 10-second Bulova watches ad",
+        "A food commercial"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The first televised commercial was a simple, 10-second ad for Bulova watches that aired on July 1, 1941, the first day commercial advertising was permitted on television."
+    },
+    {
+      "id": 33,
+      "question": "Who originally played Emperor Palpatine in The Empire Strikes Back?",
+      "options": [
+        "A male actor",
+        "Actress Marjorie Eaton",
+        "A stunt performer"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The fearsome holographic Emperor Palpatine was originally played by actress Marjorie Eaton, with her voice dubbed by Clive Revill and her eyes superimposed with those of a chimpanzee to create a sense of 'unknowable ultimate evil.'"
+    },
+    {
+      "id": 34,
+      "question": "Why was Crispin Glover replaced in Back to the Future Part II?",
+      "options": [
+        "He was sick",
+        "Due to a salary dispute",
+        "He had scheduling conflicts"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Due to a salary dispute, Crispin Glover was replaced by Jeffrey Weissman as George McFly in Back to the Future Part II. The studio used prosthetics and camera angles to make Weissman resemble Glover."
+    },
+    {
+      "id": 35,
+      "question": "What did Jay-Z do in 2013 that was related to sports?",
+      "options": [
+        "Bought a sports team",
+        "Sold his stake in the Brooklyn Nets to launch Roc Nation Sports",
+        "Became a sports commentator"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Rapper and entrepreneur Jay-Z sold his stake in the Brooklyn Nets in 2013 to launch his own sports agency, Roc Nation Sports, expanding his business empire into sports representation."
+    },
+    {
+      "id": 36,
+      "question": "Why are baseball umpires required to wear black underwear?",
+      "options": [
+        "It's part of the uniform",
+        "To prevent a distracting view if they split their pants",
+        "It's more comfortable"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Baseball umpires are required to wear black underwear for a pragmatic reason: to prevent a distracting view in the event they split their pants during the game."
+    }
+  ],
+  "quizSettings": {
+    "timeLimit": 30,
+    "showExplanation": true,
+    "randomizeQuestions": true,
+    "passingScore": 70
+  }
+}
+
+
+
