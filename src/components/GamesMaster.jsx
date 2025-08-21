@@ -457,46 +457,6 @@ const GamesMaster = () => {
     setFeedbackSent(false);
   };
 
-  const nextQuestionAndAsk = async () => {
-    if (currentQuestionNumber >= quizConfig.questionCount) {
-      await endQuiz();
-      return;
-    }
-
-    // Get a random unused question
-    const question = getRandomUnusedQuestion();
-    if (!question) {
-      console.error('No available questions left');
-      await endQuiz();
-      return;
-    }
-
-    // Mark this question as used and increment question number seamlessly
-    setUsedQuestionIds(prev => new Set([...prev, question.id]));
-    const nextQuestionNumber = currentQuestionNumber + 1;
-    setCurrentQuestionNumber(nextQuestionNumber);
-    
-    // Reset state for new question
-    setCurrentQuestion(question);
-    setPlayerAnswers([]); // Clear previous answers
-    setGameActive(true); // Keep game active - no flicker
-    setFeedbackSent(false);
-
-    // Publish the question to all players
-    await publishMessage(channels.QUESTIONS, {
-      type: messageTypes.QUESTION_ASKED,
-      data: {
-        question: question.question,
-        options: question.options,
-        questionNumber: nextQuestionNumber,
-        totalQuestions: quizConfig.questionCount,
-        timestamp: Date.now()
-      }
-    });
-
-    console.log(`Question ${nextQuestionNumber} asked:`, question.question);
-  };
-
   const endQuiz = async () => {
     // Group results by question to calculate points
     const questionResults = {};
@@ -694,13 +654,13 @@ const GamesMaster = () => {
           className={`view-btn ${activeView === 'quiz' ? 'active' : ''}`}
           onClick={() => setActiveView('quiz')}
         >
-          Quiz Management
+          🎮 Quiz Management
         </button>
         <button 
           className={`view-btn ${activeView === 'dashboard' ? 'active' : ''}`}
           onClick={() => setActiveView('dashboard')}
         >
-          Admin Dashboard
+          📊 Admin Dashboard
         </button>
       </div>
 
@@ -735,44 +695,38 @@ const GamesMaster = () => {
           </div>
         ) : (
           <div className="question-controls">
-            {!gameActive && currentQuestionNumber < quizConfig.questionCount && (
-              <button 
-                onClick={askQuestion}
-                disabled={!isConnected}
-                className="ask-question-btn"
-              >
-                Start Question {currentQuestionNumber + 1}
-              </button>
-            )}
+            <button 
+              onClick={askQuestion}
+              disabled={!isConnected || gameActive}
+              className="ask-question-btn"
+            >
+              Ask Question {currentQuestionNumber + 1}
+            </button>
             
             {gameActive && (
               <>
-                {currentQuestionNumber < quizConfig.questionCount ? (
-                  <>
-                    <button 
-                      onClick={nextQuestionAndAsk}
-                      className="next-question-btn"
-                    >
-                      Next Question
-                    </button>
-                    <button 
-                      onClick={endQuiz}
-                      disabled={!quizConfig.isStarted}
-                      className="end-quiz-btn"
-                    >
-                      Stop Quiz
-                    </button>
-                  </>
-                ) : (
-                  <button 
-                    onClick={endQuiz}
-                    className="final-scores-btn"
-                  >
-                    See Final Scores
-                  </button>
-                )}
+                <button 
+                  onClick={closeQuestion}
+                  className="close-question-btn"
+                >
+                  Close Question
+                </button>
+                <button 
+                  onClick={nextQuestion}
+                  className="next-question-btn"
+                >
+                  Next Question
+                </button>
               </>
             )}
+            
+            <button 
+              onClick={endQuiz}
+              disabled={!quizConfig.isStarted}
+              className="end-quiz-btn"
+            >
+              Stop Quiz
+            </button>
           </div>
         )}
 
