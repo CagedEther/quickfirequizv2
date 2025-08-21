@@ -413,7 +413,7 @@ const Player = () => {
             <p><strong>3 pts:</strong> First correct answer | <strong>1 pt:</strong> Correct (not first) | <strong>0 pts:</strong> Wrong/No answer</p>
           </div>
         </div>
-      ) : !currentQuestion ? (
+      ) : (!currentQuestion || !currentQuestion.question || !currentQuestion.options) ? (
         <div className="waiting-room">
           {currentQuiz ? (
             <>
@@ -446,15 +446,15 @@ const Player = () => {
         <div className="question-area">
           <div className="question-header">
             <div className="question-progress">
-              Question {currentQuestion.questionNumber} of {currentQuestion.totalQuestions}
+              Question {currentQuestion?.questionNumber || '?'} of {currentQuestion?.totalQuestions || '?'}
             </div>
           </div>
 
           <div className="question-content">
-            <h3 className="question-text">{currentQuestion.question}</h3>
+            <h3 className="question-text">{currentQuestion?.question || 'Loading question...'}</h3>
             
             <div className="answer-options">
-              {currentQuestion.options.map((option, index) => (
+              {currentQuestion?.options?.map((option, index) => (
                 <button
                   key={index}
                   className={`option-btn ${selectedAnswer === index ? 'selected' : ''} ${hasAnswered ? 'disabled' : ''}`}
@@ -464,7 +464,7 @@ const Player = () => {
                   <span className="option-letter">{String.fromCharCode(65 + index)}</span>
                   <span className="option-text">{option}</span>
                 </button>
-              ))}
+              )) || []}
             </div>
 
             {answerResult && (
@@ -476,7 +476,7 @@ const Player = () => {
                 ) : answerResult.waitingForFeedback ? (
                   <div className="result submitted">
                     ✅ Answer submitted! Waiting for results...
-                    <p>You answered: <strong>{String.fromCharCode(65 + answerResult.answerIndex)} - {currentQuestion.options[answerResult.answerIndex]}</strong></p>
+                    <p>You answered: <strong>{String.fromCharCode(65 + answerResult.answerIndex)} - {currentQuestion?.options?.[answerResult.answerIndex] || 'Unknown'}</strong></p>
                   </div>
                 ) : answerResult.feedback ? (
                   <div className={`result feedback ${answerResult.feedback === 'No answer submitted' ? 'no-answer' : (answerResult.isCorrect ? 'correct' : 'incorrect')}`}>
@@ -500,7 +500,7 @@ const Player = () => {
                       {answerResult.feedback === 'No answer submitted' ? (
                         <p><strong>You did not answer in time.</strong></p>
                       ) : (
-                        <p><strong>You answered:</strong> {String.fromCharCode(65 + answerResult.answerIndex)} - {currentQuestion.options[answerResult.answerIndex]}</p>
+                        <p><strong>You answered:</strong> {String.fromCharCode(65 + answerResult.answerIndex)} - {currentQuestion?.options?.[answerResult.answerIndex] || 'Unknown'}</p>
                       )}
                       {(!answerResult.isCorrect || answerResult.feedback === 'No answer submitted') && answerResult.correctAnswerIndex !== undefined && (
                         <p><strong>Correct answer:</strong> {String.fromCharCode(65 + answerResult.correctAnswerIndex)} - {answerResult.correctAnswerText}</p>
