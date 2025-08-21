@@ -18,6 +18,7 @@ export const PubNubProvider = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [presenceEvents, setPresenceEvents] = useState([]);
   const [connectionStatus, setConnectionStatus] = useState('Initializing...');
 
   useEffect(() => {
@@ -55,6 +56,10 @@ export const PubNubProvider = ({ children }) => {
       },
       presence: (presenceEvent) => {
         console.log('PubNub Presence:', presenceEvent);
+        setPresenceEvents(prev => [...prev, {
+          ...presenceEvent,
+          timestamp: Date.now()
+        }]);
       }
     });
 
@@ -147,6 +152,7 @@ export const PubNubProvider = ({ children }) => {
     isInitialized,
     connectionStatus,
     messages,
+    presenceEvents,
     publishMessage,
     subscribeToChannels,
     unsubscribeFromChannels,

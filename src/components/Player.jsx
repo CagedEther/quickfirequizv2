@@ -200,11 +200,18 @@ const Player = () => {
       setHasJoined(true);
       
       // Request current quiz state in case quiz is already in progress
-      await publishMessage(channels.GAME_CONTROL, {
-        type: 'REQUEST_QUIZ_STATE',
-        playerUuid: userUuid,
-        playerName: playerName.trim()
-      });
+      try {
+        await publishMessage(channels.GAME_CONTROL, {
+          type: 'REQUEST_QUIZ_STATE',
+          playerUuid: userUuid,
+          playerName: playerName.trim()
+        });
+        console.log('Quiz state request sent successfully');
+      } catch (stateError) {
+        console.error('Error requesting quiz state:', stateError);
+        // Don't fail the join process if state request fails
+        // Player can still participate in new questions
+      }
 
     } catch (error) {
       console.error('Error joining game:', error);
@@ -213,12 +220,19 @@ const Player = () => {
   };
 
   const leaveGame = async () => {
-    await publishMessage(channels.LOBBY, {
-      type: messageTypes.PLAYER_LEAVE,
-      playerUuid: userUuid,
-      playerName: playerName
-    });
+    try {
+      await publishMessage(channels.LOBBY, {
+        type: messageTypes.PLAYER_LEAVE,
+        playerUuid: userUuid,
+        playerName: playerName
+      });
+      console.log('Leave game message sent successfully');
+    } catch (error) {
+      console.error('Error leaving game:', error);
+      // Continue with cleanup even if message fails to send
+    }
 
+    // Always perform local cleanup regardless of message success
     setHasJoined(false);
     setCurrentQuestion(null);
     setHasAnswered(false);
@@ -246,22 +260,45 @@ const Player = () => {
       responseTime: (Date.now() - currentQuestion.askedAt) / 1000
     };
 
-    await publishMessage(channels.ANSWERS, answerData);
-    
-    // Update local stats
-    setGameStats(prev => ({
-      ...prev,
-      questionsAnswered: prev.questionsAnswered + 1
-    }));
+    try {
+      await publishMessage(channels.ANSWERS, answerData);
+      
+      // Update local stats only if submission was successful
+      setGameStats(prev => ({
+        ...prev,
+        questionsAnswered: prev.questionsAnswered + 1
+      }));
 
-    // Set initial result state - waiting for feedback from games master
-    setAnswerResult({
-      isCorrect: null,
-      submitted: true,
-      answerIndex: answerIndex,
-      submittedAt: Date.now(),
-      waitingForFeedback: true
-    });
+      // Set initial result state - waiting for feedback from games master
+      setAnswerResult({
+        isCorrect: null,
+        submitted: true,
+        answerIndex: answerIndex,
+        submittedAt: Date.now(),
+        waitingForFeedback: true
+      });
+      
+      console.log('Answer submitted successfully:', answerData);
+    } catch (error) {
+      console.error('Error submitting answer:', error);
+      
+      // Reset the answer state if submission failed
+      setHasAnswered(false);
+      setSelectedAnswer(null);
+      
+      // Show error feedback to user
+      setAnswerResult({
+        isCorrect: null,
+        submitted: false,
+        answerIndex: answerIndex,
+        submittedAt: Date.now(),
+        waitingForFeedback: false,
+        error: true,
+        errorMessage: 'Failed to submit answer. Please try again.'
+      });
+      
+      // Don't update stats if submission failed
+    }
   };
 
   const checkAnswer = (answerIndex) => {
@@ -469,7 +506,12 @@ const Player = () => {
 
             {answerResult && (
               <div className="answer-result">
-                {answerResult.timeUp ? (
+                {answerResult.error ? (
+                  <div className="result error">
+                    ❌ {answerResult.errorMessage}
+                    <p>You can try selecting an answer again.</p>
+                  </div>
+                ) : answerResult.timeUp ? (
                   <div className="result time-up">
                     ⏰ Time's up! You didn't submit an answer.
                   </div>

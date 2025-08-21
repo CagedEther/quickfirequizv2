@@ -12,6 +12,8 @@ const GamesMaster = () => {
     subscribeToChannels, 
     unsubscribeFromChannels, 
     messages, 
+    presenceEvents,
+    getPresence,
     channels, 
     messageTypes,
     isConnected,
@@ -136,12 +138,25 @@ const GamesMaster = () => {
 
     if (channel === channels.LOBBY && message.type === messageTypes.PLAYER_JOIN) {
       setConnectedPlayers(prev => {
-        if (!prev.find(p => p.uuid === message.playerUuid)) {
-          // Add database integration for player join
+        const existingPlayer = prev.find(p => p.uuid === message.playerUuid);
+        if (!existingPlayer) {
+          // New player joining
+          console.log(`New player joined: ${message.playerName} (${message.playerUuid})`);
           handlePlayerJoinDatabase(message.playerUuid, message.playerName);
           return [...prev, { uuid: message.playerUuid, name: message.playerName }];
+        } else if (existingPlayer.name !== message.playerName) {
+          // Player reconnecting with potentially updated name
+          console.log(`Player reconnected with updated info: ${message.playerName} (${message.playerUuid})`);
+          return prev.map(p => 
+            p.uuid === message.playerUuid 
+              ? { ...p, name: message.playerName }
+              : p
+          );
+        } else {
+          // Player already exists with same info (duplicate join message)
+          console.log(`Duplicate join message for: ${message.playerName} (${message.playerUuid})`);
+          return prev;
         }
-        return prev;
       });
     }
 
@@ -177,6 +192,80 @@ const GamesMaster = () => {
       }
     }
   }, [messages, quizConfig, currentQuestion, gameActive, currentQuestionNumber, publishMessage]);
+
+  // Handle presence events to detect player disconnections
+  useEffect(() => {
+    if (!presenceEvents || presenceEvents.length === 0) return;
+    
+    const latestPresenceEvent = presenceEvents[presenceEvents.length - 1];
+    const { channel, action, uuid } = latestPresenceEvent;
+    
+    console.log('Processing presence event:', latestPresenceEvent);
+    
+    // Only handle presence events for the lobby channel (where players join/leave)
+    if (channel === channels.LOBBY) {
+      if (action === 'leave' || action === 'timeout') {
+        // Remove player when they disconnect
+        setConnectedPlayers(prev => {
+          const updatedPlayers = prev.filter(p => p.uuid !== uuid);
+          if (updatedPlayers.length !== prev.length) {
+            console.log(`Player ${uuid} disconnected (${action})`);
+          }
+          return updatedPlayers;
+        });
+      } else if (action === 'join') {
+        // This is mainly for validation - join should already be handled by PLAYER_JOIN message
+        // But we can use this as a backup check for reconnections
+        const existingPlayer = connectedPlayers.find(p => p.uuid === uuid);
+        if (!existingPlayer) {
+          console.log(`Player ${uuid} presence join detected without PLAYER_JOIN message - possible reconnection`);
+          // Could be a reconnection where the PLAYER_JOIN message was missed
+          // We'll let the presence validation handle this case
+        } else {
+          console.log(`Player ${uuid} presence join confirmed (already tracked)`);
+        }
+      }
+    }
+  }, [presenceEvents, channels]);
+
+  // Periodic presence validation to clean up stale connections
+  useEffect(() => {
+    if (!isInitialized || !getPresence || connectedPlayers.length === 0) return;
+
+    const validatePresence = async () => {
+      try {
+        const presenceData = await getPresence(channels.LOBBY);
+        if (presenceData && presenceData.channels && presenceData.channels[channels.LOBBY]) {
+          const actuallyPresentUuids = presenceData.channels[channels.LOBBY].occupants?.map(occupant => occupant.uuid) || [];
+          
+          // Remove players who are no longer actually present
+          setConnectedPlayers(prev => {
+            const stillConnected = prev.filter(player => actuallyPresentUuids.includes(player.uuid));
+            
+            if (stillConnected.length !== prev.length) {
+              const disconnectedPlayers = prev.filter(player => !actuallyPresentUuids.includes(player.uuid));
+              console.log('Cleaned up stale connections:', disconnectedPlayers.map(p => p.name || p.uuid));
+            }
+            
+            return stillConnected;
+          });
+        }
+      } catch (error) {
+        console.error('Error validating presence:', error);
+      }
+    };
+
+    // Run validation every 30 seconds
+    const intervalId = setInterval(validatePresence, 30000);
+    
+    // Run initial validation after 5 seconds
+    const timeoutId = setTimeout(validatePresence, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, [isInitialized, getPresence, channels.LOBBY, connectedPlayers.length]);
 
   // Note: Individual feedback is now sent immediately in sendImmediateFeedback
   // This effect is kept for any edge cases but should rarely trigger
